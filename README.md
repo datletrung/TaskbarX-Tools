@@ -8,4 +8,8 @@ Python
 pystray, screeninfo, tkinter, pillow
 
 ## How to use
-Run main.py and enjoy the new tool. Consider adding the tool to start up folder to run on computer restart.
+Run "TaskbarX Tools.pyw" and enjoy the new tool.
+Consider adding the tool to start up folder to run on computer restart. To do so, follow these steps below:
+1. Win + R
+2. shell:startup + Enter
+3. Copy "TaskbarX Tools.pyw" to this folder 
