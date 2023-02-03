@@ -73,6 +73,7 @@ def minimizeTA():
     window.withdraw()
     traysystem = pystray.Icon("TaskbarX Tools", Image.open(icon_file), "TaskbarX Tools",
                     menu=pystray.Menu(
+                        pystray.MenuItem("Open", tray_system_click, default=True),
                         pystray.MenuItem("Open", tray_system_click),
                         pystray.MenuItem("Restart TaskbarX", tray_system_click),
                         pystray.MenuItem("Exit", tray_system_click)
@@ -103,22 +104,29 @@ background_thread = thread_with_trace(target=checkMonitor)
 background_thread.start()
 
 window = tk.Tk()
+window.minsize(width=350, height=100)
+window.resizable(False,False)
 window.title("TaskbarX Tools")
 window.iconphoto(False, tk.PhotoImage(file = icon_file))
 window.protocol("WM_DELETE_WINDOW", exitTA)
+window.grid_rowconfigure(0, weight=1)
+window.grid_columnconfigure(0, weight=1)
 
-greeting = tk.Label(text="TaskbarX Tools").grid(column=1,row=1, sticky='nesw')
+greeting = tk.Label(text="TaskbarX Tools", font='TkDefaultFont 18 bold').grid(column=0,row=0, sticky='news')
 button1 = tk.Button(text="Open TaskbarX Configurator",
-                    command = openTaskbarX
-                    ).grid(column=1,row=2, sticky='nesw')
+                    command = openTaskbarX,
+                    bg='#90E0EF'
+                    ).grid(column=0,row=1, sticky='news')
 button2 = tk.Button(text="Restart TaskbarX",
-                    command = restartTaskbarX
-                    ).grid(column=1,row=3, sticky='nesw')
+                    command = restartTaskbarX,
+                    bg='#FFBD44'
+                    ).grid(column=0,row=2, sticky='news')
 button3 = tk.Button(text="Minimize",
-                    command = minimizeTA
-                    ).grid(column=1,row=4, sticky='nesw')
+                    command = minimizeTA,
+                    bg='#00CA4E'
+                    ).grid(column=0,row=3, sticky='news')
 button4 = tk.Button(text="Exit",
                     command = exitTA,
                     bg='#FF605C'
-                    ).grid(column=1,row=5, sticky='nesw')
+                    ).grid(column=0,row=4, sticky='news')
 window.mainloop()
